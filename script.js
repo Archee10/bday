@@ -9,7 +9,7 @@ const passcodeContainer = document.querySelector('.passcode-slots');
 keys.forEach(key => {
   key.addEventListener('click', () => {
     const keyValue = key.getAttribute('data-key');
-    
+
     // Ignore star and hash for now, or clear on them
     if (keyValue === '*' || keyValue === '#') {
       currentInput = '';
@@ -17,11 +17,11 @@ keys.forEach(key => {
       errorMessage.classList.remove('show');
       return;
     }
-    
+
     if (currentInput.length < 4) {
       currentInput += keyValue;
       updateSlots();
-      
+
       if (currentInput.length === 4) {
         checkPasscode();
       }
@@ -51,19 +51,19 @@ function checkPasscode() {
         slot.style.color = 'var(--light-blue)';
       });
       setTimeout(() => {
-        window.location.href = 'secondpage.html';
+        window.location.href = 'video.html';
       }, 500);
     } else {
       // Incorrect! Show error, animate shake, and clear
       passcodeContainer.classList.add('shake');
       errorMessage.classList.add('show');
-      
+
       setTimeout(() => {
         passcodeContainer.classList.remove('shake');
         currentInput = '';
         updateSlots();
       }, 500);
-      
+
       // Hide error message after a while
       setTimeout(() => {
         errorMessage.classList.remove('show');

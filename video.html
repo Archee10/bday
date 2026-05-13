@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    video {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <video id="bdayVideo" src="bday1.mp4" autoplay playsinline></video>
+
+  <script>
+    const video = document.getElementById('bdayVideo');
+    
+    // Attempt to autoplay
+    video.play().catch(error => {
+      console.log("Autoplay prevented. Waiting for a tap to play.");
+      // If autoplay is prevented by the browser, wait for any tap on the screen to play
+      document.body.addEventListener('click', () => {
+        video.play();
+      }, { once: true });
+    });
+  </script>
+</body>
+</html>
