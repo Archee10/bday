@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyhole Animation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000; /* Black background for the fade effect */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .keyhole-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .keyhole-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* If the keyhole is not perfectly in the center, you can adjust this (e.g., '50% 60%') */
+      transform-origin: center center;
+      /* 3s animation duration, accelerates then decelerates slightly */
+      animation: zoomIntoKeyhole 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes zoomIntoKeyhole {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+        filter: brightness(1);
+      }
+      70% {
+        transform: scale(15);
+        opacity: 1;
+        filter: brightness(0.8);
+      }
+      100% {
+        transform: scale(40);
+        opacity: 0; /* Fade to black at the very end to simulate going into darkness */
+        filter: brightness(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="keyhole-container">
+    <img src="extended.jpeg" class="keyhole-image" alt="Keyhole">
+  </div>
+
+  <script>
+    // Redirect to nb3.jpeg when the animation completes
+    setTimeout(() => {
+      window.location.href = 'nb3.jpeg';
+    }, 3000); // 3000ms matches the 3s animation duration
+  </script>
+</body>
+</html>
