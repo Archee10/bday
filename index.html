@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Passcode</title>
+  <link rel="stylesheet" href="styles.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Poppins:wght@400;600;700&family=Pacifico&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div class="left-panel">
+
+      <div class="poster-layout">
+        <div class="poster-top">
+          <div class="poster-name">Nishka</div>
+        </div>
+
+        <div class="poster-center">
+          <svg width="320" height="360" viewBox="0 0 320 360" fill="none" stroke="var(--primary-red)" stroke-width="4"
+            stroke-linecap="round" stroke-linejoin="round" class="scallop-svg">
+            <path
+              d="M 20 20 Q 40 0 60 20 Q 80 0 100 20 Q 120 0 140 20 Q 160 0 180 20 Q 200 0 220 20 Q 240 0 260 20 Q 280 0 300 20 Q 320 40 300 60 Q 320 80 300 100 Q 320 120 300 140 Q 320 160 300 180 Q 320 200 300 220 Q 320 240 300 260 Q 320 280 300 300 Q 320 320 300 340 Q 280 360 260 340 Q 240 360 220 340 Q 200 360 180 340 Q 160 360 140 340 Q 120 360 100 340 Q 80 360 60 340 Q 40 360 20 340 Q 0 320 20 300 Q 0 280 20 260 Q 0 240 20 220 Q 0 200 20 180 Q 0 160 20 140 Q 0 120 20 100 Q 0 80 20 60 Q 0 40 20 20 Z" />
+          </svg>
+          <div class="photo-wrapper">
+            <img src="assets/photo.png" alt="Nishka" class="poster-photo">
+          </div>
+          <!-- Red Party Hat -->
+          <div class="poster-hat">
+            <svg width="60" height="80" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 10 70 L 30 10 L 50 70 Z" fill="var(--primary-red)" />
+              <path d="M 15 55 L 45 55" stroke="rgba(0,0,0,0.2)" stroke-width="8" />
+              <path d="M 22 35 L 38 35" stroke="rgba(0,0,0,0.2)" stroke-width="8" />
+              <circle cx="30" cy="10" r="6" fill="var(--primary-red)" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="poster-bottom">
+          <div class="poster-age">May 19!</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="right-panel">
+      <h1 class="title">Enter a passcode</h1>
+
+      <div class="passcode-slots">
+        <div class="slot" id="slot-0"></div>
+        <div class="slot" id="slot-1"></div>
+        <div class="slot" id="slot-2"></div>
+        <div class="slot" id="slot-3"></div>
+      </div>
+
+      <div class="keypad">
+        <button class="key" data-key="1">1</button>
+        <button class="key" data-key="2">2</button>
+        <button class="key" data-key="3">3</button>
+        <button class="key" data-key="4">4</button>
+        <button class="key" data-key="5">5</button>
+        <button class="key" data-key="6">6</button>
+        <button class="key" data-key="7">7</button>
+        <button class="key" data-key="8">8</button>
+        <button class="key" data-key="9">9</button>
+        <button class="key star" data-key="*">*</button>
+        <button class="key" data-key="0">0</button>
+        <button class="key hash" data-key="#">#</button>
+      </div>
+
+      <div id="error-message" class="error-message">Incorrect passcode. Try again!</div>
+    </div>
+  </div>
+
+  <script src="script.js?v=2"></script>
+</body>
+
+</html>
