@@ -51,7 +51,11 @@ function checkPasscode() {
         slot.style.color = 'var(--light-blue)';
       });
       setTimeout(() => {
-        window.location.href = 'video.html';
+        const overlay = document.getElementById('pageTransition');
+        if (overlay) overlay.classList.add('active');
+        setTimeout(() => {
+          window.location.href = 'video.html';
+        }, 800);
       }, 500);
     } else {
       // Incorrect! Show error, animate shake, and clear
