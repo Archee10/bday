@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
       width: 100vw;
       overflow: hidden;
     }
+
     video {
       width: 100%;
       height: 100%;
@@ -23,12 +25,13 @@
     }
   </style>
 </head>
+
 <body>
-  <video id="bdayVideo" src="bday1.mp4" autoplay playsinline></video>
+  <video id="bdayVideo" src="download.mp4" autoplay playsinline></video>
 
   <script>
     const video = document.getElementById('bdayVideo');
-    
+
     // Attempt to autoplay
     video.play().catch(error => {
       console.log("Autoplay prevented. Waiting for a tap to play.");
@@ -39,4 +42,5 @@
     });
   </script>
 </body>
+
 </html>
