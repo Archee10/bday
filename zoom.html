@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday!</title>
+  <title>Zoom Animation</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background-color: #fff;
+      background-color: #000;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -25,29 +24,26 @@
     }
   </style>
 </head>
-
 <body>
-  <video id="bdayVideo" src="download.mp4" autoplay playsinline></video>
+  <!-- Note: We are specifically leaving out the 'controls' attribute so the player is clean -->
+  <video id="zoomVideo" src="zoom.mp4" autoplay playsinline></video>
 
   <script>
-    const video = document.getElementById('bdayVideo');
+    const video = document.getElementById('zoomVideo');
 
-    // Redirect after 8 seconds of playback
-    video.addEventListener('timeupdate', () => {
-      if (video.currentTime >= 8) {
-        window.location.href = 'zoom.html';
-      }
-    });
-
-    // Attempt to autoplay
+    // Attempt to autoplay the video seamlessly
     video.play().catch(error => {
       console.log("Autoplay prevented. Waiting for a tap to play.");
-      // If autoplay is prevented by the browser, wait for any tap on the screen to play
+      // If the browser blocks autoplay, wait for a user tap
       document.body.addEventListener('click', () => {
         video.play();
       }, { once: true });
     });
+
+    // Automatically redirect to nb3.jpeg when the video finishes
+    video.addEventListener('ended', () => {
+      window.location.href = 'nb3.jpeg';
+    });
   </script>
 </body>
-
 </html>
