@@ -32,6 +32,13 @@
   <script>
     const video = document.getElementById('bdayVideo');
 
+    // Redirect after 8 seconds of playback
+    video.addEventListener('timeupdate', () => {
+      if (video.currentTime >= 8) {
+        window.location.href = 'nb2.jpeg';
+      }
+    });
+
     // Attempt to autoplay
     video.play().catch(error => {
       console.log("Autoplay prevented. Waiting for a tap to play.");
