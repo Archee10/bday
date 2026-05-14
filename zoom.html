@@ -5,14 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zoom Animation</title>
-  
-  <!-- Preload current video for fast starting -->
-  <link rel="preload" as="video" href="zoom.mp4">
-  
-  <!-- Prefetch next step assets for smooth transition -->
-  <link rel="prefetch" href="collage_play.html">
-  <link rel="prefetch" href="collage.mp4">
-  
   <style>
     body {
       margin: 0;
@@ -36,7 +28,7 @@
 
 <body>
   <!-- Note: We are specifically leaving out the 'controls' attribute so the player is clean -->
-  <video id="zoomVideo" src="zoom.mp4" autoplay playsinline preload="auto"></video>
+  <video id="zoomVideo" src="zoom.mp4" autoplay playsinline></video>
 
   <script>
     const video = document.getElementById('zoomVideo');
