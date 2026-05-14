@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,39 +23,15 @@
       height: 100%;
       object-fit: cover;
     }
-
-    .page-transition-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: #000;
-      z-index: 99999;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-    }
-
-    .page-transition-overlay.active {
-      opacity: 1;
-    }
   </style>
 </head>
+
 <body>
-  <div id="pageTransition" class="page-transition-overlay active"></div>
   <!-- Note: We are specifically leaving out the 'controls' attribute so the player is clean -->
   <video id="zoomVideo" src="zoom.mp4" autoplay playsinline></video>
 
   <script>
     const video = document.getElementById('zoomVideo');
-
-    // Fade in when the page loads
-    window.addEventListener('load', () => {
-      requestAnimationFrame(() => {
-        document.getElementById('pageTransition').classList.remove('active');
-      });
-    });
 
     // Attempt to autoplay the video seamlessly
     video.play().catch(error => {
@@ -65,13 +42,11 @@
       }, { once: true });
     });
 
-    // Automatically redirect to nb3.jpeg when the video finishes
+    // Automatically redirect to collage_play.html when the video finishes
     video.addEventListener('ended', () => {
-      document.getElementById('pageTransition').classList.add('active');
-      setTimeout(() => {
-        window.location.href = 'nb3.jpeg';
-      }, 800);
+      window.location.href = 'collage_play.html';
     });
   </script>
 </body>
+
 </html>
