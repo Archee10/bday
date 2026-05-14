@@ -5,6 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday!</title>
+  
+  <!-- Preload current video for fast starting -->
+  <link rel="preload" as="video" href="download.mp4">
+  
+  <!-- Prefetch next step assets for smooth transition -->
+  <link rel="prefetch" href="zoom.html">
+  <link rel="prefetch" href="zoom.mp4">
+  
   <style>
     body {
       margin: 0;
@@ -27,7 +35,7 @@
 </head>
 
 <body>
-  <video id="bdayVideo" src="download.mp4" autoplay playsinline></video>
+  <video id="bdayVideo" src="download.mp4" autoplay playsinline preload="auto"></video>
 
   <script>
     const video = document.getElementById('bdayVideo');

@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday - Collage</title>
+  
+  <!-- Preload current video for fast starting -->
+  <link rel="preload" as="video" href="collage.mp4">
+  
   <style>
     body {
       margin: 0;
@@ -25,7 +29,7 @@
   </style>
 </head>
 <body>
-  <video id="collageVideo" src="collage.mp4" autoplay playsinline loop></video>
+  <video id="collageVideo" src="collage.mp4" autoplay playsinline loop preload="auto"></video>
 
   <script>
     const video = document.getElementById('collageVideo');
