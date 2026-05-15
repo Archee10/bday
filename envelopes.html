@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Envelopes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-red: #852936;
+      --bg-red: #a43847;
+      --white: #FAF7EA;
+      --soft-pink: #E1AEBC;
+      --light-blue: #C5D9E2;
+      --shadow-color: rgba(0, 0, 0, 0.15);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Nunito', sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .aurora-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -1;
+      background: #000;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.8;
+      animation: drift 20s infinite alternate ease-in-out;
+      will-change: transform;
+    }
+
+    .blob-1 {
+      background-color: #972839;
+      width: 60vw;
+      height: 60vh;
+      top: -10vh;
+      left: -10vw;
+      animation-duration: 25s;
+    }
+
+    .blob-2 {
+      background-color: #972839;
+      width: 50vw;
+      height: 50vh;
+      bottom: -10vh;
+      right: -10vw;
+      animation-duration: 28s;
+      animation-delay: -5s;
+    }
+
+    .blob-3 {
+      background-color: #972839;
+      width: 70vw;
+      height: 70vh;
+      bottom: 10vh;
+      left: 10vw;
+      animation-duration: 32s;
+      animation-delay: -10s;
+    }
+
+    .blob-4 {
+      background-color: #972839;
+      width: 55vw;
+      height: 55vh;
+      top: 10vh;
+      right: 15vw;
+      animation-duration: 22s;
+      animation-delay: -15s;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(10vw, -10vh) scale(1.1); }
+      66% { transform: translate(-10vw, 10vh) scale(0.9); }
+      100% { transform: translate(5vw, 5vh) scale(1.15); }
+    }
+
+    .title {
+      font-family: 'Pacifico', cursive;
+      font-size: 3.5rem;
+      color: var(--white);
+      margin-bottom: 50px;
+      text-align: center;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 30px rgba(250, 247, 234, 0.2);
+      animation: fadeInDown 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .envelopes-container {
+      display: flex;
+      gap: 50px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* CSS ENVELOPE */
+    .envelope-wrapper {
+      perspective: 1000px;
+      cursor: pointer;
+      animation: float 4s ease-in-out infinite alternate;
+    }
+
+    .envelope-wrapper:nth-child(2) {
+      animation-delay: 0.7s;
+    }
+
+    .envelope-wrapper:nth-child(3) {
+      animation-delay: 1.4s;
+    }
+
+    .envelope-wrapper:nth-child(4) {
+      animation-delay: 2.1s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(-2deg); }
+      100% { transform: translateY(-15px) rotate(2deg); }
+    }
+
+    .envelope {
+      position: relative;
+      width: 280px;
+      height: 180px;
+      background-image: url('download.png');
+      background-size: 180% auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .envelope-wrapper:hover .envelope {
+      transform: scale(1.08) translateY(-15px);
+      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.25));
+    }
+
+    /* Premium Glint/Shine Effect on Hover */
+    .envelope::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 100%
+      );
+      transform: skewX(-25deg);
+      transition: left 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .envelope-wrapper:hover .envelope::after {
+      left: 150%;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+        padding: 40px 20px;
+        justify-content: flex-start;
+      }
+      .envelopes-container {
+        flex-direction: column;
+        gap: 40px;
+      }
+      .title {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="aurora-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <div class="title">Open your surprises...</div>
+
+  <div class="envelopes-container">
+    
+    <!-- Envelope 1 -->
+    <div class="envelope-wrapper" onclick="openEnvelope(1)">
+      <div class="envelope"></div>
+    </div>
+
+    <!-- Envelope 2 -->
+    <div class="envelope-wrapper" onclick="openEnvelope(2)">
+      <div class="envelope"></div>
+    </div>
+
+    <!-- Envelope 3 -->
+    <div class="envelope-wrapper" onclick="openEnvelope(3)">
+      <div class="envelope"></div>
+    </div>
+
+    <!-- Envelope 4 -->
+    <div class="envelope-wrapper" onclick="openEnvelope(4)">
+      <div class="envelope"></div>
+    </div>
+
+  </div>
+
+  <script>
+    function openEnvelope(id) {
+      // You can add redirection logic here, e.g.:
+      // if(id === 1) window.location.href = 'surprise1.html';
+      console.log('Envelope ' + id + ' clicked!');
+    }
+  </script>
+</body>
+</html>
