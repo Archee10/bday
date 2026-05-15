@@ -186,19 +186,24 @@
 
     @media (max-width: 768px) {
       body {
-        overflow-y: auto;
-        height: auto;
+        overflow: hidden;
+        height: 100vh;
         min-height: 100vh;
-        padding: 40px 20px;
-        justify-content: flex-start;
+        padding: 0 10px;
+        justify-content: center;
       }
       .envelopes-container {
-        flex-direction: column;
-        gap: 40px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .envelope {
+        width: 150px;
+        height: 96px;
       }
       .title {
-        font-size: 2.2rem;
-        margin-bottom: 30px;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
       }
     }
   </style>
