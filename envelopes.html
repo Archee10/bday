@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Red Envelopes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Pacifico&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --primary-red: #852936;
@@ -89,10 +91,21 @@
     }
 
     @keyframes drift {
-      0% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(10vw, -10vh) scale(1.1); }
-      66% { transform: translate(-10vw, 10vh) scale(0.9); }
-      100% { transform: translate(5vw, 5vh) scale(1.15); }
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      33% {
+        transform: translate(10vw, -10vh) scale(1.1);
+      }
+
+      66% {
+        transform: translate(-10vw, 10vh) scale(0.9);
+      }
+
+      100% {
+        transform: translate(5vw, 5vh) scale(1.15);
+      }
     }
 
     .title {
@@ -106,8 +119,15 @@
     }
 
     @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .envelopes-container {
@@ -138,8 +158,13 @@
     }
 
     @keyframes float {
-      0% { transform: translateY(0) rotate(-2deg); }
-      100% { transform: translateY(-15px) rotate(2deg); }
+      0% {
+        transform: translateY(0) rotate(-2deg);
+      }
+
+      100% {
+        transform: translateY(-15px) rotate(2deg);
+      }
     }
 
     .envelope {
@@ -152,14 +177,14 @@
       background-repeat: no-repeat;
       transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
       transform-style: preserve-3d;
-      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
       overflow: hidden;
       border-radius: 12px;
     }
 
     .envelope-wrapper:hover .envelope {
       transform: scale(1.08) translateY(-15px);
-      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.25));
+      filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.25));
     }
 
     /* Premium Glint/Shine Effect on Hover */
@@ -170,12 +195,10 @@
       left: -150%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(
-        to right,
-        transparent 0%,
-        rgba(255, 255, 255, 0.4) 50%,
-        transparent 100%
-      );
+      background: linear-gradient(to right,
+          transparent 0%,
+          rgba(255, 255, 255, 0.4) 50%,
+          transparent 100%);
       transform: skewX(-25deg);
       transition: left 0.7s cubic-bezier(0.19, 1, 0.22, 1);
     }
@@ -192,16 +215,19 @@
         padding: 0 10px;
         justify-content: center;
       }
+
       .envelopes-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         row-gap: 50px;
         column-gap: 20px;
       }
+
       .envelope {
         width: 150px;
         height: 96px;
       }
+
       .title {
         font-size: 1.8rem;
         margin-bottom: 60px;
@@ -209,6 +235,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="aurora-bg">
@@ -221,7 +248,7 @@
   <div class="title">Open your surprises...</div>
 
   <div class="envelopes-container">
-    
+
     <!-- Envelope 1 -->
     <div class="envelope-wrapper" onclick="openEnvelope(1)">
       <div class="envelope"></div>
@@ -247,10 +274,11 @@
   <script>
     function openEnvelope(id) {
       if (id === 1) {
-        window.location.href = 'nb4.jpeg';
+        window.location.href = '4extended.png';
       }
       console.log('Envelope ' + id + ' clicked!');
     }
   </script>
 </body>
+
 </html>
