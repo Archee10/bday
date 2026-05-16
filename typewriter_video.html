@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typewriter Message</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #000;
+        }
+
+        .back-btn {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            letter-spacing: 1px;
+        }
+
+        .back-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-50%) scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <video id="typeVideo" src="finaltypewriter.mp4" autoplay playsinline></video>
+    <a href="envelopes.html" class="back-btn" id="backBtn">GO BACK</a>
+
+    <script>
+        const video = document.getElementById('typeVideo');
+        const backBtn = document.getElementById('backBtn');
+
+        // Attempt to play with sound
+        video.play().catch(error => {
+            console.log("Autoplay with sound prevented. Trying muted.");
+            video.muted = true;
+            video.play();
+        });
+
+        // Show back button when video ends
+        video.addEventListener('ended', () => {
+            backBtn.classList.add('show');
+        });
+
+        // Safety timeout to show button if video fails to trigger 'ended'
+        setTimeout(() => {
+            backBtn.classList.add('show');
+        }, 8500);
+
+        // Tap to unmute / play if still paused
+        document.body.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+            }
+            video.muted = false;
+        }, { once: true });
+    </script>
+</body>
+</html>
