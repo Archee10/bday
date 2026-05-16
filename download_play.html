@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video</title>
+  <style>
+    /* Smooth page fade-in */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      animation: fadeIn 1.5s ease-in-out;
+      cursor: pointer; /* Indicate the page can be clicked to go back */
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none; /* Prevent interaction that might show controls */
+    }
+
+    /* Hide default video controls across different browsers */
+    video::-webkit-media-controls {
+      display: none !important;
+    }
+    video::-webkit-media-controls-enclosure {
+      display: none !important;
+    }
+    video::-webkit-media-controls-panel {
+      display: none !important;
+    }
+    video::-webkit-media-controls-play-button {
+      display: none !important;
+    }
+    video::-webkit-media-controls-start-playback-button {
+      display: none !important;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <video id="downloadVideo" src="download.mp4" autoplay playsinline loop muted preload="auto"></video>
+
+  <script>
+    const video = document.getElementById('downloadVideo');
+
+    // Attempt to autoplay
+    video.play().catch(error => {
+      console.log("Autoplay prevented. Waiting for a tap to play.");
+    });
+
+    // Allow user to click anywhere to go back to the collage
+    document.body.addEventListener('click', () => {
+      document.body.style.transition = 'opacity 0.5s ease-in-out';
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        window.location.href = 'collage_play.html';
+      }, 500);
+    });
+  </script>
+</body>
+
+</html>
