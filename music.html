@@ -178,18 +178,19 @@
         /* Mobile */
         @media(max-width: 500px) {
             .player-card {
-                width: 90%;
+                width: 80%;
+                max-width: 320px;
                 height: auto;
-                padding: 25px 30px;
+                padding: 20px 20px;
             }
 
             .title {
-                font-size: 28px;
+                font-size: 24px;
             }
 
             .photo-frame {
                 width: 100%;
-                height: 200px;
+                height: 160px;
             }
         }
     </style>
@@ -216,15 +217,15 @@
             <!-- Controls -->
             <div class="controls">
                 <button id="prev">
-                    <span class="icon">⏮</span>
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
                 </button>
 
                 <button class="play-btn" id="play">
-                    ▶
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                 </button>
 
                 <button id="next">
-                    <span class="icon">⏭</span>
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
                 </button>
             </div>
 
@@ -287,16 +288,19 @@
         // Initial load
         loadSong(currentSong);
 
+        const playIcon = `<svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`;
+        const pauseIcon = `<svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
+
         function playSong() {
             isPlaying = true;
             audio.play();
-            playBtn.innerHTML = '⏸';
+            playBtn.innerHTML = pauseIcon;
         }
 
         function pauseSong() {
             isPlaying = false;
             audio.pause();
-            playBtn.innerHTML = '▶';
+            playBtn.innerHTML = playIcon;
         }
 
         playBtn.addEventListener('click', () => {
