@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #000;
+            background-color: #852936;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,7 +17,21 @@
             overflow: hidden;
         }
 
-        img {
+        .bg-blur {
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            width: 110%;
+            height: 110%;
+            object-fit: cover;
+            filter: blur(20px);
+            opacity: 0.7;
+            z-index: 0;
+        }
+
+        .fg-img {
+            position: relative;
+            z-index: 1;
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
@@ -76,7 +90,8 @@
     </style>
 </head>
 <body>
-    <img id="letterImg" src="" alt="Letter">
+    <img id="bgImg" class="bg-blur" src="" alt="">
+    <img id="letterImg" class="fg-img" src="" alt="Letter">
     <a href="envelopes.html" class="back-btn" aria-label="Go Back">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M15 18l-6-6 6-6"/>
@@ -90,6 +105,7 @@
         
         if (imgName) {
             document.getElementById('letterImg').src = imgName;
+            document.getElementById('bgImg').src = imgName;
         } else {
             // If no image is specified, go back to envelopes
             window.location.href = 'envelopes.html';
