@@ -39,7 +39,7 @@
         /* Music Card */
         .player-card {
             width: 270px;
-            height: auto;
+            height: 270px;
             background: #dbd3c3;
             border-radius: 10px;
             position: absolute;
@@ -49,7 +49,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 16px 20px;
+            padding: 12px 20px;
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
             z-index: 2;
         }
@@ -63,7 +63,7 @@
             color: #8d0000;
             font-size: 18px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             letter-spacing: 0.5px;
         }
 
@@ -74,26 +74,44 @@
 
         .photo-frame {
             width: 100%;
-            aspect-ratio: 4 / 5;
+            height: 160px;
             background: #222;
             border: none;
             overflow: hidden;
             border-radius: 4px;
             box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(0, 0, 0, 0.4);
             flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
 
-        .photo-frame img {
+        .blur-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: blur(12px) grayscale(100%);
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        .photo-frame img#cover {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
             filter: grayscale(100%);
-            opacity: 0.9;
+            opacity: 0.95;
         }
 
         /* Controls */
         .controls {
-            margin-top: 12px;
+            margin-top: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -132,7 +150,7 @@
         /* Progress Bar */
         .progress-container {
             width: 85%;
-            margin-top: 14px;
+            margin-top: 8px;
             position: relative;
             cursor: pointer;
         }
@@ -178,7 +196,7 @@
         /* Mobile */
         @media(max-width: 500px) {
             .player-card {
-                width: 85%;
+                width: 60%;
                 max-width: 320px;
                 height: auto;
                 padding: 20px 20px;
@@ -190,7 +208,7 @@
 
             .photo-frame {
                 width: 100%;
-                aspect-ratio: 4 / 5;
+                height: 160px;
             }
         }
     </style>
@@ -211,6 +229,7 @@
 
             <!-- Replaceable Photo -->
             <div class="photo-frame">
+                <img src="music1.jpeg" class="blur-bg" alt="bg">
                 <img src="music1.jpeg" id="cover" alt="cover">
             </div>
 
