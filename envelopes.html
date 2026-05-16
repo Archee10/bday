@@ -274,8 +274,12 @@
   <script>
     function openEnvelope(id) {
       if (id === 1) {
-        window.location.href = '4extended.png';
+        window.location.href = 'letter.html?img=4extended.png';
       } else if (id === 2) {
+        window.location.href = 'letter.html?img=letter3.png';
+      } else if (id === 3) {
+        window.location.href = 'letter.html?img=letter4.png';
+      } else if (id === 4) {
         window.location.href = 'typewriter_video.html';
       }
       console.log('Envelope ' + id + ' clicked!');

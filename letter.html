@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typewriter Message</title>
+    <title>Letter Viewer</title>
     <style>
         body {
             margin: 0;
@@ -17,11 +17,17 @@
             overflow: hidden;
         }
 
-        video {
-            width: 100%;
-            height: 100%;
+        img {
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
-            background-color: #000;
+            /* Fade in the image for a smooth look */
+            animation: imgFade 1s ease forwards;
+        }
+
+        @keyframes imgFade {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .back-btn {
@@ -43,13 +49,7 @@
             color: white;
             text-decoration: none;
             opacity: 0;
-            visibility: hidden;
-        }
-
-        .back-btn.show {
-            opacity: 1;
-            visibility: visible;
-            animation: btnFade 0.5s ease forwards;
+            animation: btnFade 0.5s ease forwards 0.5s;
         }
 
         @keyframes btnFade {
@@ -76,41 +76,24 @@
     </style>
 </head>
 <body>
-    <video id="typeVideo" src="finaltypewriter.mp4" autoplay playsinline></video>
-    <a href="envelopes.html" class="back-btn" id="backBtn" aria-label="Go Back">
+    <img id="letterImg" src="" alt="Letter">
+    <a href="envelopes.html" class="back-btn" aria-label="Go Back">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M15 18l-6-6 6-6"/>
         </svg>
     </a>
 
     <script>
-        const video = document.getElementById('typeVideo');
-        const backBtn = document.getElementById('backBtn');
-
-        // Attempt to play with sound
-        video.play().catch(error => {
-            console.log("Autoplay with sound prevented. Trying muted.");
-            video.muted = true;
-            video.play();
-        });
-
-        // Show back button when video ends
-        video.addEventListener('ended', () => {
-            backBtn.classList.add('show');
-        });
-
-        // Safety timeout to show button if video fails to trigger 'ended'
-        setTimeout(() => {
-            backBtn.classList.add('show');
-        }, 8500);
-
-        // Tap to unmute / play if still paused
-        document.body.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-            }
-            video.muted = false;
-        }, { once: true });
+        // Get the image name from the URL query string
+        const urlParams = new URLSearchParams(window.location.search);
+        const imgName = urlParams.get('img');
+        
+        if (imgName) {
+            document.getElementById('letterImg').src = imgName;
+        } else {
+            // If no image is specified, go back to envelopes
+            window.location.href = 'envelopes.html';
+        }
     </script>
 </body>
 </html>
