@@ -39,7 +39,7 @@
         /* Music Card */
         .player-card {
             width: 270px;
-            aspect-ratio: 9 / 16;
+            height: auto;
             background: #dbd3c3;
             border-radius: 10px;
             position: absolute;
@@ -74,7 +74,7 @@
 
         .photo-frame {
             width: 100%;
-            flex: 1;
+            aspect-ratio: 4 / 5;
             background: #222;
             border: none;
             overflow: hidden;
@@ -178,9 +178,9 @@
         /* Mobile */
         @media(max-width: 500px) {
             .player-card {
-                width: 75%;
+                width: 85%;
                 max-width: 320px;
-                aspect-ratio: 9 / 16;
+                height: auto;
                 padding: 20px 20px;
             }
 
@@ -190,7 +190,7 @@
 
             .photo-frame {
                 width: 100%;
-                flex: 1;
+                aspect-ratio: 4 / 5;
             }
         }
     </style>
