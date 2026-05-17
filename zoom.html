@@ -3,26 +3,31 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Zoom Animation</title>
   <link rel="prefetch" href="collage_play.html">
   <link rel="preload" href="collage.mp4" as="video" type="video/mp4">
   <style>
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 100%;
+      height: 100dvh;
       overflow: hidden;
       background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overscroll-behavior: none;
     }
 
     video {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      max-width: 100vw;
+      max-height: 100dvh;
+      object-fit: contain;
       pointer-events: none;
     }
 
@@ -46,7 +51,7 @@
     const video = document.getElementById('zoomVideo');
 
     function tryPlay() {
-      video.play().catch(() => {});
+      video.play().catch(() => { });
     }
 
     tryPlay();
