@@ -24,25 +24,35 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      pointer-events: none;
+    }
+
+    /* Hide Safari's native play overlay on iOS */
+    video::-webkit-media-controls,
+    video::-webkit-media-controls-enclosure,
+    video::-webkit-media-controls-panel,
+    video::-webkit-media-controls-play-button,
+    video::-webkit-media-controls-start-playback-button {
+      display: none !important;
+      -webkit-appearance: none;
     }
   </style>
 </head>
 
 <body>
   <!-- Note: We are specifically leaving out the 'controls' attribute so the player is clean -->
-  <video id="zoomVideo" src="zoom.mp4" autoplay playsinline muted></video>
+  <video id="zoomVideo" src="zoom.mp4" autoplay playsinline webkit-playsinline muted></video>
 
   <script>
     const video = document.getElementById('zoomVideo');
 
-    // Attempt to autoplay the video seamlessly
-    video.play().catch(error => {
-      console.log("Autoplay prevented. Waiting for a tap to play.");
-      // If the browser blocks autoplay, wait for a user tap
-      document.body.addEventListener('click', () => {
-        video.play();
-      }, { once: true });
-    });
+    function tryPlay() {
+      video.play().catch(() => {});
+    }
+
+    tryPlay();
+    document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
+    document.addEventListener('click', tryPlay, { once: true });
 
     // Automatically redirect to collage_play.html when the video finishes
     video.addEventListener('ended', () => {

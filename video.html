@@ -24,12 +24,23 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      pointer-events: none;
+    }
+
+    /* Hide Safari's native play overlay on iOS */
+    video::-webkit-media-controls,
+    video::-webkit-media-controls-enclosure,
+    video::-webkit-media-controls-panel,
+    video::-webkit-media-controls-play-button,
+    video::-webkit-media-controls-start-playback-button {
+      display: none !important;
+      -webkit-appearance: none;
     }
   </style>
 </head>
 
 <body>
-  <video id="bdayVideo" src="download1.mp4" autoplay playsinline muted preload="auto"></video>
+  <video id="bdayVideo" src="download1.mp4" autoplay playsinline webkit-playsinline muted preload="auto"></video>
 
   <script>
     const video = document.getElementById('bdayVideo');
@@ -43,13 +54,16 @@
       }, remaining);
     }
 
-    // Attempt to autoplay
-    video.play().then(scheduleRedirect).catch(error => {
-      console.log("Autoplay prevented. Waiting for a tap to play.");
-      document.body.addEventListener('click', () => {
-        video.play().then(scheduleRedirect);
-      }, { once: true });
-    });
+    function tryPlay() {
+      video.play().then(scheduleRedirect).catch(() => {});
+    }
+
+    // Attempt autoplay immediately
+    tryPlay();
+
+    // iOS Safari fallback: play on first touch (fires before 'click')
+    document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
+    document.addEventListener('click', tryPlay, { once: true });
   </script>
 </body>
 

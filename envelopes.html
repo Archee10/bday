@@ -240,10 +240,63 @@
         margin-bottom: 60px;
       }
     }
+
+    /* Back Button */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+      z-index: 100;
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      opacity: 0;
+      animation: btnFade 0.5s ease forwards 0.4s;
+    }
+
+    @keyframes btnFade {
+      from { opacity: 0; transform: scale(0.8); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .back-btn svg {
+      width: 22px;
+      height: 22px;
+      margin-right: 2px;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: scale(1.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+      color: #fff;
+    }
+
+    .back-btn:active {
+      transform: scale(0.95);
+    }
   </style>
 </head>
 
 <body>
+
+  <a href="collage_play.html" class="back-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </a>
 
   <div class="aurora-bg">
     <div class="blob blob-1"></div>
