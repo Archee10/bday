@@ -8,19 +8,19 @@
   <link rel="prefetch" href="zoom.html">
   <link rel="preload" href="zoom.mp4" as="video" type="video/mp4">
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background-color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      width: 100vw;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
+      background-color: #000;
     }
 
     video {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
