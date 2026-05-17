@@ -30,17 +30,18 @@
             left: 20px;
             width: 44px;
             height: 44px;
-            background: rgba(20, 20, 20, 0.65);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.3s ease;
             z-index: 100;
-            color: white;
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             opacity: 0;
             visibility: hidden;
@@ -64,10 +65,11 @@
         }
 
         .back-btn:hover {
-            background: rgba(40, 40, 40, 0.8);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.6);
             transform: scale(1.08);
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            color: #fff;
         }
 
         .back-btn:active {
@@ -76,7 +78,7 @@
     </style>
 </head>
 <body>
-    <video id="typeVideo" src="finaltypewriter.mp4" autoplay playsinline></video>
+    <video id="typeVideo" src="finaltypewriter.mp4" autoplay playsinline muted></video>
     <a href="envelopes.html" class="back-btn" id="backBtn" aria-label="Go Back">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M15 18l-6-6 6-6"/>
@@ -87,12 +89,8 @@
         const video = document.getElementById('typeVideo');
         const backBtn = document.getElementById('backBtn');
 
-        // Attempt to play with sound
-        video.play().catch(error => {
-            console.log("Autoplay with sound prevented. Trying muted.");
-            video.muted = true;
-            video.play();
-        });
+        // Play video (should be allowed immediately since it's muted)
+        video.play().catch(e => console.log(e));
 
         // Show back button when video ends
         video.addEventListener('ended', () => {
@@ -103,14 +101,6 @@
         setTimeout(() => {
             backBtn.classList.add('show');
         }, 8500);
-
-        // Tap to unmute / play if still paused
-        document.body.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-            }
-            video.muted = false;
-        }, { once: true });
     </script>
 </body>
 </html>

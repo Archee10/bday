@@ -36,17 +36,18 @@
             left: 20px;
             width: 44px;
             height: 44px;
-            background: rgba(20, 20, 20, 0.65);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.3s ease;
             z-index: 100;
-            color: white;
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             opacity: 0;
             animation: btnFade 0.5s ease forwards 0.5s;
@@ -64,10 +65,11 @@
         }
 
         .back-btn:hover {
-            background: rgba(40, 40, 40, 0.8);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.6);
             transform: scale(1.08);
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            color: #fff;
         }
 
         .back-btn:active {
