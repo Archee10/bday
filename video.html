@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday!</title>
+  <link rel="prefetch" href="zoom.html">
+  <link rel="preload" href="zoom.mp4" as="video" type="video/mp4">
   <style>
     body {
       margin: 0;
@@ -27,24 +29,25 @@
 </head>
 
 <body>
-  <video id="bdayVideo" src="download1.mp4" autoplay playsinline muted></video>
+  <video id="bdayVideo" src="download1.mp4" autoplay playsinline muted preload="auto"></video>
 
   <script>
     const video = document.getElementById('bdayVideo');
+    let redirectTimer = null;
 
-    // Redirect after 8 seconds of playback
-    video.addEventListener('timeupdate', () => {
-      if (video.currentTime >= 8) {
+    function scheduleRedirect() {
+      if (redirectTimer) return;
+      const remaining = Math.max(0, 8 - video.currentTime) * 1000;
+      redirectTimer = setTimeout(() => {
         window.location.href = 'zoom.html';
-      }
-    });
+      }, remaining);
+    }
 
     // Attempt to autoplay
-    video.play().catch(error => {
+    video.play().then(scheduleRedirect).catch(error => {
       console.log("Autoplay prevented. Waiting for a tap to play.");
-      // If autoplay is prevented by the browser, wait for any tap on the screen to play
       document.body.addEventListener('click', () => {
-        video.play();
+        video.play().then(scheduleRedirect);
       }, { once: true });
     });
   </script>

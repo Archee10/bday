@@ -5,8 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Red Envelopes</title>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Pacifico&display=swap"
     rel="stylesheet">
+  <link rel="preload" href="download.png" as="image">
+  <link rel="prefetch" href="letter.html">
+  <link rel="prefetch" href="typewriter_video.html">
   <style>
     :root {
       --primary-red: #852936;
@@ -273,16 +280,13 @@
 
   <script>
     function openEnvelope(id) {
-      if (id === 1) {
-        window.location.href = 'letter.html?img=4extended.png';
-      } else if (id === 2) {
-        window.location.href = 'letter.html?img=letter3.png';
-      } else if (id === 3) {
-        window.location.href = 'letter.html?img=letter4.png';
-      } else if (id === 4) {
-        window.location.href = 'typewriter_video.html';
-      }
-      console.log('Envelope ' + id + ' clicked!');
+      const destinations = {
+        1: 'letter.html?img=4extended.png',
+        2: 'letter.html?img=letter3.png',
+        3: 'letter.html?img=letter4.png',
+        4: 'typewriter_video.html'
+      };
+      if (destinations[id]) window.location.href = destinations[id];
     }
   </script>
 </body>

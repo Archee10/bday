@@ -6,11 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Birthday Passcode</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Poppins:wght@400;600;700&family=Pacifico&display=swap"
     rel="stylesheet">
+  <link rel="preload" href="pg2.png" as="image">
 </head>
 
 <body>
@@ -29,7 +32,7 @@
               d="M 20 20 Q 40 0 60 20 Q 80 0 100 20 Q 120 0 140 20 Q 160 0 180 20 Q 200 0 220 20 Q 240 0 260 20 Q 280 0 300 20 Q 320 40 300 60 Q 320 80 300 100 Q 320 120 300 140 Q 320 160 300 180 Q 320 200 300 220 Q 320 240 300 260 Q 320 280 300 300 Q 320 320 300 340 Q 280 360 260 340 Q 240 360 220 340 Q 200 360 180 340 Q 160 360 140 340 Q 120 360 100 340 Q 80 360 60 340 Q 40 360 20 340 Q 0 320 20 300 Q 0 280 20 260 Q 0 240 20 220 Q 0 200 20 180 Q 0 160 20 140 Q 0 120 20 100 Q 0 80 20 60 Q 0 40 20 20 Z" />
           </svg>
           <div class="photo-wrapper">
-            <img src="pg2.png" alt="Nishka" class="poster-photo">
+            <img src="pg2.png" alt="Nishka" class="poster-photo" fetchpriority="high" decoding="async">
           </div>
           <!-- Red Party Hat -->
           <div class="poster-hat">
@@ -78,7 +81,7 @@
     </div>
   </div>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=2" defer></script>
 </body>
 
 </html>
